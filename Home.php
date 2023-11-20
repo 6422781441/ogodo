@@ -5,40 +5,40 @@
     $Address = $_POST["Address"];
     $Ac_type = $_POST["Ac_type"];
 
-        echo "You are searching for $Address" ;
+        
+    //echo "You are searching for every accommodation in our website" ;
 
 
-
-    if (is_null($Ac_name) && is_null($Address) && $Ac_type == "*") 
-        {  
+    if (is_null($Ac_name) && is_null($Address) && $Ac_type == "All") 
+        {      
         $q = "Select * from accommodatiom ";
         }
 
-    if ( !is_null($Ac_name) && is_null($Address) && $Ac_type == "*"){
-        $q = "Select * from accommodatiom where Ac_name LIKE '%$Ac_name%'";
+    if ( !is_null($Ac_name) && is_null($Address) && $Ac_type == "All"
+        $q = "Select * from accommodatiom where Ac_name = '$Ac_name '";
     }
 
-    if ( is_null($Ac_name) && !is_null($Address) && $Ac_type == "*"){
-        $q = "Select * from accommodatiom where Address LIKE '%$Address%'";
+    if ( is_null($Ac_name) && !is_null($Address) && $Ac_type == "All")
+        $q = "Select * from accommodatiom where Address = '$Address'";
     }
-    if ( !is_null($Ac_type) && !is_null($Address) && $Ac_type == "*"){
+    if ( !is_null($Ac_type) && !is_null($Address) && $Ac_type == "All" ){
         $q = "Select * from accommodatiom where Address LIKE '%$Address%' and Ac_name LIKE '%$Ac_name%'";
     }
     
 
 
-    if (is_null($Ac_name) && is_null($Address) && $Ac_type != "*") {  
+    if (is_null($Ac_name) && is_null($Address) && $Ac_type != "All" ) {  
         $q = "Select * from accommodatiom where Ac_type = '$Ac_type'";
     }
 
-    if ( !is_null($Ac_name) && is_null($Address) && $Ac_type != "*"){
+    if ( !is_null($Ac_name) && is_null($Address) && $Ac_type != "All" ){
         $q = "Select * from accommodatiom where Ac_name LIKE '%$Ac_name%' and Ac_type = '$Ac_type'";
     }
 
-    if ( is_null($Ac_name) && !is_null($Address) && $Ac_type != "*"){
+    if ( is_null($Ac_name) && !is_null($Address) && $Ac_type != "All" ){
         $q = "Select * from accommodatiom where Address LIKE '%$Address%' and Ac_type = '$Ac_type'";
     }
-    if ( !is_null($Ac_type) && !is_null($Address) && $Ac_type != "*"){
+    if ( !is_null($Ac_type) && !is_null($Address) && $Ac_type != "All"  ){
         $q = "Select * from accommodatiom where Address LIKE '%$Address%' and Ac_name LIKE '%$Ac_name%' and Ac_type ='$Ac_type'";
     }
     
